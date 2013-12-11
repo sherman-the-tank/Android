@@ -4,9 +4,18 @@ import java.util.UUID;
 
 public class Dish {
 
+	public UUID getRestaurantID() {
+		return mRestaurantID;
+	}
+
+	public void setRestaurantID(UUID restaurantID) {
+		mRestaurantID = restaurantID;
+	}
+
 	private UUID mId;
 	private String mName;
 	private String mPrice;
+	private UUID mRestaurantID;
 	
 	public Dish(String name, String price) {
 		mId = UUID.randomUUID();

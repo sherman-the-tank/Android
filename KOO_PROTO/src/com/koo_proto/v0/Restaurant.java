@@ -10,6 +10,7 @@ public class Restaurant {
 	private String mName;
 	private String mAddress;
 	private ArrayList<Dish> mDishes;
+	private RestaurantOrder mOrder;
 	
 	public String getAddress() {
 		return mAddress;
@@ -20,6 +21,23 @@ public class Restaurant {
 		mName = name;
 		mAddress = address;
 		mDishes = new ArrayList<Dish>();
+		mOrder = new RestaurantOrder(mId);
+	}
+	
+	public RestaurantOrder getOrder() {
+		return mOrder;
+	}
+	
+	public void addDishToOrder(UUID dishID) {
+		mOrder.addDish(dishID);
+	}
+	
+	public boolean removeDishFromOrder(UUID dishID) {
+		return mOrder.removeDish(dishID);
+	}
+	
+	public boolean orderContainsDish(UUID dishID) {
+		return mOrder.contains(dishID);
 	}
 	
 	public void setAddress(String address) {
@@ -44,6 +62,9 @@ public class Restaurant {
 
 	public void setDishes(ArrayList<Dish> dishes) {
 		mDishes = dishes;
+		for (Dish dish : dishes) {
+			dish.setRestaurantID(mId);
+		}
 	}
 
 	@Override
