@@ -13,6 +13,7 @@
     <string name="nearby_restaurant">Nearby Restaurants</string>
     <string name="menu_list">Menu</string>
     <string name="menu_option_order">Order</string>
+    <string name="menu_option_reserve">Reserve</string>
     
     
     <string name="reserve_table">Reserve Table</string>

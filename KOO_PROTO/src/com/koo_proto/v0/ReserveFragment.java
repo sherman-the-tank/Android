@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -37,6 +39,7 @@ public class ReserveFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 		getActivity().setTitle(R.string.reserve_table);
 	}
 	
@@ -93,5 +96,11 @@ public class ReserveFragment extends Fragment {
 			mDate = (Date)intent.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
 			mDateButton.setText(mSimpleDateFormat.format(mDate));
 		}
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.fragment_restaurant_reserve_list, menu);
 	}
 }

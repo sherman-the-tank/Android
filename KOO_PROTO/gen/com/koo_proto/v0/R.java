@@ -24,7 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080010;
+        public static final int action_settings=0x7f080011;
         public static final int activity_main=0x7f080000;
         public static final int activity_restaurant_list=0x7f080001;
         public static final int book_restaurant_button=0x7f080006;
@@ -37,6 +37,7 @@ public final class R {
         public static final int fragment_restaurant_list=0x7f08000b;
         public static final int haircut_button=0x7f080007;
         public static final int menu_item_dish_list_order=0x7f08000f;
+        public static final int menu_item_restaurant_list_reserve=0x7f080010;
         public static final int order_food_button=0x7f080005;
         public static final int reserve_date_button=0x7f080009;
         public static final int reserve_number_people_picker=0x7f080008;
@@ -54,7 +55,8 @@ public final class R {
     }
     public static final class menu {
         public static final int fragment_dish_list=0x7f070000;
-        public static final int main=0x7f070001;
+        public static final int fragment_restaurant_reserve_list=0x7f070001;
+        public static final int main=0x7f070002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -65,14 +67,15 @@ public final class R {
         public static final int i_want_to=0x7f050002;
         public static final int menu_list=0x7f050008;
         public static final int menu_option_order=0x7f050009;
+        public static final int menu_option_reserve=0x7f05000a;
         public static final int nearby_restaurant=0x7f050007;
         public static final int order_food=0x7f050004;
-        public static final int reserve_for_how_many=0x7f05000b;
-        public static final int reserve_for_when=0x7f05000c;
-        public static final int reserve_for_which_day=0x7f05000d;
-        public static final int reserve_table=0x7f05000a;
-        public static final int select_date_title=0x7f05000e;
-        public static final int select_time_title=0x7f05000f;
+        public static final int reserve_for_how_many=0x7f05000c;
+        public static final int reserve_for_when=0x7f05000d;
+        public static final int reserve_for_which_day=0x7f05000e;
+        public static final int reserve_table=0x7f05000b;
+        public static final int select_date_title=0x7f05000f;
+        public static final int select_time_title=0x7f050010;
     }
     public static final class style {
         /** 
