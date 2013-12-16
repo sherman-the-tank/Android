@@ -54,7 +54,9 @@ public class TimePickerFragment extends DialogFragment {
 			public void onTimeChanged(TimePicker view, int hour, int minute) {
 				Calendar cal = Calendar.getInstance();
 				cal.set(Calendar.HOUR_OF_DAY, hour);
+				minute = minute - minute % 15;
 				cal.set(Calendar.MINUTE, minute);
+				cal.set(Calendar.SECOND, 0);
 				mTime = cal.getTime();
 				getArguments().putSerializable(EXTRA_TIME, mTime);
 			}

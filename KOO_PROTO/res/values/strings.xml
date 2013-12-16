@@ -19,7 +19,9 @@
     
     <string name="reserve_for_how_many">For How Many People?</string>
     <string name="reserve_for_when">For what time?</string>
+    <string name="reserve_for_which_day">For which day?</string>
     
+    <string name="select_date_title">Select Date</string>
     <string name="select_time_title">Select Time</string>
     
 </resources>
