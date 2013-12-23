@@ -24,5 +24,12 @@
     
     <string name="select_date_title">Select Date</string>
     <string name="select_time_title">Select Time</string>
+
+    <string name="confirm_title">Confirm Your Reservation</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_edit">Edit</string>
+
+    <string name="thank_you">Thank you! Your Reservation has been sent.</string>
+    <string name="thank_you_main_menu">Main Menu</string>
     
 </resources>

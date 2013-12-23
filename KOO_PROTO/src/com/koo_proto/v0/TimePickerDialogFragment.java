@@ -14,16 +14,16 @@ import android.view.View;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
-public class TimePickerFragment extends DialogFragment {
+public class TimePickerDialogFragment extends DialogFragment {
 
 	public static final String EXTRA_TIME = "com.koo_proto.v0.TimePIckerFragment.time";
 	private Date mTime;
 	
-	public static TimePickerFragment newInstance(Date date) {
+	public static TimePickerDialogFragment newInstance(Date date) {
 		Bundle args = new Bundle();
 		args.putSerializable(EXTRA_TIME, date);
 		
-		TimePickerFragment fragment = new TimePickerFragment();
+		TimePickerDialogFragment fragment = new TimePickerDialogFragment();
 		fragment.setArguments(args);
 		return fragment;
 	}

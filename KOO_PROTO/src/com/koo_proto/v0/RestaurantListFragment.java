@@ -1,14 +1,22 @@
 package com.koo_proto.v0;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.NavUtils;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class RestaurantListFragment extends ListFragment {
 
@@ -28,6 +36,15 @@ public class RestaurantListFragment extends ListFragment {
 		ArrayAdapter<Restaurant> adapter = 
 				new ArrayAdapter<Restaurant>(getActivity(), android.R.layout.simple_list_item_1, mRestaurants);
 		setListAdapter(adapter);
+		setHasOptionsMenu(true);
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
+		return super.onCreateView(inflater, parent, savedInstanceState);
 	}
 	
 	@Override
@@ -40,7 +57,20 @@ public class RestaurantListFragment extends ListFragment {
 			startActivity(i);
 		} else {
 			Intent i = new Intent(getActivity(), ReserveActivity.class);
+			i.putExtra(ReserveFragment.RESTAURANT_ID, r.getId());
 			startActivity(i);
 		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				if (NavUtils.getParentActivityName(getActivity()) != null) {
+					NavUtils.navigateUpFromSameTask(getActivity());
+				}
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

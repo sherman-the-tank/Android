@@ -15,15 +15,15 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 
-public class DatePickerFragment extends DialogFragment {
+public class DatePickerDialogFragment extends DialogFragment {
 	public static final String EXTRA_DATE = "com.koo_proto.v0.DatePIckerFragment.date";
 	private Date mDate;
 	
-	public static DatePickerFragment newInstance(Date date) {
+	public static DatePickerDialogFragment newInstance(Date date) {
 		Bundle args = new Bundle();
 		args.putSerializable(EXTRA_DATE, date);
 		
-		DatePickerFragment fragment = new DatePickerFragment();
+		DatePickerDialogFragment fragment = new DatePickerDialogFragment();
 		fragment.setArguments(args);
 		return fragment;
 	}
@@ -55,7 +55,9 @@ public class DatePickerFragment extends DialogFragment {
 				getArguments().putSerializable(EXTRA_DATE, mDate);
 			}
 		});
-		datePicker.setMinDate(mDate.getTime());
+		if (datePicker.getMinDate() < mDate.getTime()) {
+			datePicker.setMinDate(mDate.getTime());
+		}
 		// Can not book on date which is 2 days from now.
 		datePicker.setMaxDate(new Date(mDate.getTime() + 2 * 24 * 3600 * 1000).getTime());
 			
