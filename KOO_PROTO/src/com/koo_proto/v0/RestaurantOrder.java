@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class RestaurantOrder {
-	
+
 	private UUID mRestaurantID;
 	private ArrayList<UUID> mOrderedDishIDs;
 	
 	public RestaurantOrder(UUID restaurantID) {
 		mRestaurantID = restaurantID;
 		mOrderedDishIDs = new ArrayList<UUID>();
+	}
+	
+	public UUID getRestaurantID() {
+		return mRestaurantID;
 	}
 	
 	public void addDish(UUID dishID) {
@@ -27,5 +31,9 @@ public class RestaurantOrder {
 	
 	public boolean contains(UUID dishID) {
 		return mOrderedDishIDs.contains(dishID);
+	}
+	
+	public ArrayList<UUID> getOrderedDishIDs() {
+		return mOrderedDishIDs;
 	}
 }

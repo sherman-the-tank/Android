@@ -82,8 +82,9 @@ public final class R {
         public static final int reserve_table=0x7f05000b;
         public static final int select_date_title=0x7f05000f;
         public static final int select_time_title=0x7f050010;
-        public static final int thank_you=0x7f050014;
-        public static final int thank_you_main_menu=0x7f050015;
+        public static final int thank_you_main_menu=0x7f050016;
+        public static final int thank_you_order=0x7f050015;
+        public static final int thank_you_reservation=0x7f050014;
     }
     public static final class style {
         /** 

@@ -34,7 +34,7 @@ public class MainFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getActivity(), RestaurantListActivity.class);
-				i.putExtra(RestaurantListFragment.IS_ORDER, true);
+				i.putExtra(RestaurantListFragment.INTENT, UserIntent.ORDER_RESTAURANT);
 				startActivity(i);
 			}
 		});
@@ -44,7 +44,7 @@ public class MainFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), RestaurantListActivity.class);
-				i.putExtra(RestaurantListFragment.IS_ORDER, false);
+				i.putExtra(RestaurantListFragment.INTENT, UserIntent.RESERVE_RESTAURANT);
 				startActivity(i);
 			}
 		});

@@ -59,7 +59,7 @@ public class DatePickerDialogFragment extends DialogFragment {
 			datePicker.setMinDate(mDate.getTime());
 		}
 		// Can not book on date which is 2 days from now.
-		datePicker.setMaxDate(new Date(mDate.getTime() + 2 * 24 * 3600 * 1000).getTime());
+		// datePicker.setMaxDate(new Date(mDate.getTime() + 2 * 24 * 3600 * 1000).getTime());
 			
 		return new AlertDialog.Builder(getActivity())
 			.setView(v)

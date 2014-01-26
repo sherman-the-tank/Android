@@ -1,16 +1,13 @@
 package com.koo_proto.v0;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +17,12 @@ import android.widget.ListView;
 
 public class RestaurantListFragment extends ListFragment {
 
-	public static final String IS_ORDER = "IS_ORDER";
+	public static final String TAG = "RestaurantListFragment";
+	
+	public static final String INTENT = "INTENT";
 	
 	private ArrayList<Restaurant> mRestaurants;
-	private boolean mIsOrder;
+	private String mIntent;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,7 @@ public class RestaurantListFragment extends ListFragment {
 		getActivity().setTitle(R.string.nearby_restaurant);
 		mRestaurants = RestaurantStore.get(getActivity()).getRestaurants();
 		
-		mIsOrder = getActivity().getIntent().getExtras().getBoolean(IS_ORDER);
+		mIntent = getActivity().getIntent().getExtras().getString(INTENT);
 		
 		ArrayAdapter<Restaurant> adapter = 
 				new ArrayAdapter<Restaurant>(getActivity(), android.R.layout.simple_list_item_1, mRestaurants);
@@ -51,14 +50,18 @@ public class RestaurantListFragment extends ListFragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Restaurant r = (Restaurant)getListAdapter().getItem(position);
 		
-		if (mIsOrder) {
+		if (mIntent.equals(UserIntent.ORDER_RESTAURANT)) {
 			Intent i = new Intent(getActivity(), DishListActivity.class);
 			i.putExtra(DishListFragment.RESTAURANT_ID, r.getId());
+			i.putExtra(DishListFragment.INTENT, mIntent);
 			startActivity(i);
-		} else {
+		} else if (mIntent.equals(UserIntent.RESERVE_RESTAURANT)) {
 			Intent i = new Intent(getActivity(), ReserveActivity.class);
 			i.putExtra(ReserveFragment.RESTAURANT_ID, r.getId());
+			i.putExtra(ReserveFragment.INTENT, mIntent);
 			startActivity(i);
+		} else {
+			Log.d(TAG, "Unrecognized Intent:" + mIntent);
 		}
 	}
 	

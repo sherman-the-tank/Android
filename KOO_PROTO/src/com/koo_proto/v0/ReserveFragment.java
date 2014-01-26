@@ -26,6 +26,7 @@ import android.widget.NumberPicker;
 public class ReserveFragment extends Fragment {
 	
 	public static final String RESTAURANT_ID = "restaurant_id";
+	public static final String INTENT = "intent";
 	
 	private static final String DIALOG_TIME_PICKER = "time_picker";
 	private static final int REQUEST_TIME = 0;
@@ -51,7 +52,7 @@ public class ReserveFragment extends Fragment {
 	private SimpleDateFormat mSimpleDateFormat;
 	
 	private Restaurant mRestaurant;
-	
+    private String mIntent;	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class ReserveFragment extends Fragment {
 		Bundle extras = getActivity().getIntent().getExtras();
 		UUID restaurantID = (UUID)extras.get(RESTAURANT_ID);
 		mRestaurant = RestaurantStore.get(getActivity()).getRestaurant(restaurantID);
+		mIntent = extras.getString(INTENT);
 		getActivity().setTitle(R.string.reserve_table);
 	}
 	
@@ -121,7 +123,7 @@ public class ReserveFragment extends Fragment {
 			mDateButton.setText(mSimpleDateFormat.format(mDate));
 		} else if (requestCode == REQUEST_CONFIRMATION) {
 			FragmentManager fm = getActivity().getSupportFragmentManager();
-			ThankYouDialogFragment dialog = ThankYouDialogFragment.newInstance("Reserve");
+			ThankYouDialogFragment dialog = ThankYouDialogFragment.newInstance(mIntent);
 			dialog.setTargetFragment(ReserveFragment.this, REQUEST_THANKYOU);
 			dialog.show(fm, DIALOG_THANKYOU);
 		} else if (requestCode == REQUEST_THANKYOU) {
@@ -156,7 +158,7 @@ public class ReserveFragment extends Fragment {
 						reserveTime.get(Calendar.SECOND)
 				).getTime();
 				
-				ConfirmationDialogFragment dialog = ConfirmationDialogFragment.newInstance("Reserve", mRestaurant.getId(), reserveDateTime, mPartySize);
+				ConfirmationDialogFragment dialog = ConfirmationDialogFragment.newInstanceForReserveRestauarnt(mRestaurant.getId(), reserveDateTime, mPartySize);
 				dialog.setTargetFragment(ReserveFragment.this, REQUEST_CONFIRMATION);
 				dialog.show(fm, DIALOG_CONFIRMATION);
 				return true;

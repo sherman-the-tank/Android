@@ -1,8 +1,5 @@
 package com.koo_proto.v0;
 
-import java.util.Date;
-import java.util.UUID;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -41,8 +38,11 @@ public class ThankYouDialogFragment extends DialogFragment {
 		
 		View v = getActivity().getLayoutInflater().inflate(R.layout.confirmation, null);
 		TextView confirmationTextView = (TextView)v.findViewById(R.id.confirmation_text);
-		confirmationTextView.setText(R.string.thank_you);		
-				
+		if (mIntent.equals(UserIntent.RESERVE_RESTAURANT)) {
+			confirmationTextView.setText(R.string.thank_you_reservation);		
+		} else if (mIntent.equals(UserIntent.ORDER_RESTAURANT)) {
+			confirmationTextView.setText(R.string.thank_you_order);			
+		}
 		return new AlertDialog.Builder(getActivity())
 			.setView(v)
 			.setTitle(R.string.confirm_title)

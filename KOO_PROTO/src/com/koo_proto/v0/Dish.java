@@ -1,6 +1,7 @@
 package com.koo_proto.v0;
 
 import java.util.UUID;
+import android.content.Context;
 
 public class Dish {
 
@@ -14,13 +15,15 @@ public class Dish {
 
 	private UUID mId;
 	private String mName;
-	private String mPrice;
+	private double mPrice;
 	private UUID mRestaurantID;
 	
-	public Dish(String name, String price) {
+	public Dish(Context context, String name, double price) {
 		mId = UUID.randomUUID();
 		mName = name;
 		mPrice = price;
+		DishStore dishStore = DishStore.get(context);
+		dishStore.addDish(this);
 	}
 	
 	public String getName() {
@@ -31,14 +34,18 @@ public class Dish {
 		mName = name;
 	}
 
-	public String getPrice() {
+	public String getPriceString() {
+		return String.format("$%.2f", mPrice);
+	}
+	
+	public double getPrice() {
 		return mPrice;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(float price) {
 		mPrice = price;
 	}
-
+	
 	public UUID getId() {
 		return mId;
 	}
